@@ -1,6 +1,6 @@
 import Adafruit_DHT
 import time
-from datetime import datetime
+import datetime
 import boto3
 from decimal import Decimal
 
@@ -38,7 +38,9 @@ if __name__ == "__main__":
         try:
             now = datetime.datetime.now()
             humidity, temp = read_temp()
+            time.sleep(5)
             store_data_in_table(table, 'humidity', humidity)
+            time.sleep(5)
             store_data_in_table(table, 'temp', temp)
             print('Temp {}F, Humidity {}%'.format(humidity, temp))
 
